@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+source <(curl -fsS --location "https://raw.githubusercontent.com/coreyMerritt/bash-utils/refs/heads/main/src/.definitions")
+
+function import() {
+  import_name="$1"
+  shift 1
+  if [[ "${functions["$import_name"]}" ]]; then
+    source <(curl -fsS --location "${functions["$import_name"]}")
+  elif curl -fsS --head --location "$import_name" >/dev/null; then
+    source <(curl -fsS --location "$import_name") $@
+  else
+    exit 1
+  fi
+}

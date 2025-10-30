@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+function getFunctions() {
+  declare -F | awk '{print $3}'
+}

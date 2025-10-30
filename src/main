@@ -3,14 +3,8 @@
 # To import all bash-utils, place this at the top of your bash script:
 #   source <(curl -fsS --location "https://raw.githubusercontent.com/coreyMerritt/bash-utils/refs/heads/main/src/main")
 
-utils=(
-  "cd.project-root"
-  "deploy.venv"
-  "docker-deploy.postgres"
-  "get.yaml-var"
-  "run.cloud-script"
-)
+source <(curl -fsS --location "https://raw.githubusercontent.com/coreyMerritt/bash-utils/refs/heads/main/src/import")
 
-for util in "${utils[@]}"; do
-  source <(curl -fsS --location "https://raw.githubusercontent.com/coreyMerritt/bash-utils/refs/heads/main/src/$util")
+for key in "${!functions[@]}"; do
+  import "$key"
 done
