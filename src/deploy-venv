@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-source <(curl -fsS --location "https://raw.githubusercontent.com/coreyMerritt/bash-utils/refs/heads/main/src/cd-projectroot")
-if [[ ! -d .venv ]]; then
-  python3 -m venv .venv
-fi
