@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -x
+
 [[ "$1" ]] && postgres_user="$1" || postgres_user="postgres"
 [[ "$2" ]] && postgres_password="$2" || postgres_password="postgres"
 [[ "$3" ]] && postgres_name="$3" || postgres_name="postgres"
