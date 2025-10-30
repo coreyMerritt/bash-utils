@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# To import the "import" util, place this at the top of your bash script:
+#   source <(curl -fsS --location "https://raw.githubusercontent.com/coreyMerritt/bash-utils/refs/heads/main/src/import")
+
 source <(curl -fsS --location "https://raw.githubusercontent.com/coreyMerritt/bash-utils/refs/heads/main/src/.definitions")
 
 function import() {

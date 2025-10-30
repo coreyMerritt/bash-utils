@@ -5,6 +5,6 @@
 
 source <(curl -fsS --location "https://raw.githubusercontent.com/coreyMerritt/bash-utils/refs/heads/main/src/import")
 
-for key in "${!functions[@]}"; do
-  import "$key"
+for value in "${!functions[@]}"; do
+  import "$value"
 done
