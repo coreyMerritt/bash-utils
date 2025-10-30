@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+while [[ ! -f src/$(ls -al src/ 2>/dev/null | awk '{print $9}' | grep -E "^main") ]]; do
+ cd ..
+done
