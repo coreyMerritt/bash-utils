@@ -7,7 +7,7 @@ function dockerDeployPostgres() {
   [[ "$4" ]] && postgres_port="$4" || postgres_port="5432"
   [[ "$5" ]] && container_name="$5" || container_name="postgres"
   [[ "$6" ]] && container_version="$6" || container_version="17"
-  sudo docker stop "$container_name" && sudo docker rm "$container_name"|| true
+  sudo docker stop "$container_name" >/dev/null 2>&1 && sudo docker rm "$container_name" >/dev/null 2>&1 || true
   sudo docker run \
     --name "$container_name" \
     -d \
