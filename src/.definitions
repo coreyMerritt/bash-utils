@@ -6,9 +6,11 @@ declare -A functions
 functions["cdProjectRoot"]="$base/cd.project-root"
 functions["deployVenv"]="$base/deploy.venv"
 functions["dockerDeployPostgres"]="$base/docker-deploy.postgres"
+functions["error"]="$base/error"
 functions["getFunctions"]="$base/get.functions"
 functions["getYamlVar"]="$base/get.yaml-var"
 functions["import"]="$base/import"
+functions["success"]="$base/success"
 
 declare -A libraries
 libraries["bash-test"]="https://raw.githubusercontent.com/coreyMerritt/bash-test/refs/tags/v2.0.0/bash-test"

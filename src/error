@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+function error() {
+  echo -e "\n\t\033[38;2;255;0;0m✘\033[0m $msg\n"
+}
