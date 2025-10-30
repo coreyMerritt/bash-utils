@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if ! which yq;
+if ! which yq; then
   curl -sL -o /usr/bin/yq https://github.com/mikefarah/yq/releases/download/v4.48.1/yq_linux_amd64
   chmod +x /usr/bin/yq
 fi
