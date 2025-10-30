@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
-starting_dir="$(pwd)"
-while [[ ! -f src/$(ls -al src/ 2>/dev/null | awk '{print $9}' | grep -E "^main") ]]; do
-  cd ..
-  if [[ "$(pwd)" == "/" ]]; then
-    cd "$starting_dir"
-    exit 1
-  fi
-done
+function cdProjectRoot() {
+  starting_dir="$(pwd)"
+  while [[ ! -f src/$(ls -al src/ 2>/dev/null | awk '{print $9}' | grep -E "^main") ]]; do
+    cd ..
+    if [[ "$(pwd)" == "/" ]]; then
+      cd "$starting_dir"
+      exit 1
+    fi
+  done
+}

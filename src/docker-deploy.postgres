@@ -1,22 +1,24 @@
 #!/usr/bin/env bash
 
-[[ "$1" ]] && postgres_user="$1" || postgres_user="postgres"
-[[ "$2" ]] && postgres_password="$2" || postgres_password="postgres"
-[[ "$3" ]] && postgres_name="$3" || postgres_name="postgres"
-[[ "$4" ]] && postgres_port="$4" || postgres_port="5432"
-[[ "$5" ]] && container_name="$5" || container_name="postgres"
-[[ "$6" ]] && container_version="$6" || container_version="17"
-sudo docker stop "$container_name" && sudo docker rm "$container_name"|| true
-sudo docker run \
-  --name "$container_name" \
-  -d \
-  --rm \
-  -e "POSTGRES_USER=$postgres_user" \
-  -e "POSTGRES_PASSWORD=$postgres_password" \
-  -e "POSTGRES_DB=$postgres_name" \
-  -p "$postgres_port:5432" \
-  "postgres:$container_version"
-until sudo docker exec "$container_name" pg_isready -U "$postgres_user" -d "$postgres_name" > /dev/null 2>&1; do
-  echo "Waiting for Postgres to become healthy..."
-  sleep 1
-done
+function dockerDeployPostgres() {
+  [[ "$1" ]] && postgres_user="$1" || postgres_user="postgres"
+  [[ "$2" ]] && postgres_password="$2" || postgres_password="postgres"
+  [[ "$3" ]] && postgres_name="$3" || postgres_name="postgres"
+  [[ "$4" ]] && postgres_port="$4" || postgres_port="5432"
+  [[ "$5" ]] && container_name="$5" || container_name="postgres"
+  [[ "$6" ]] && container_version="$6" || container_version="17"
+  sudo docker stop "$container_name" && sudo docker rm "$container_name"|| true
+  sudo docker run \
+    --name "$container_name" \
+    -d \
+    --rm \
+    -e "POSTGRES_USER=$postgres_user" \
+    -e "POSTGRES_PASSWORD=$postgres_password" \
+    -e "POSTGRES_DB=$postgres_name" \
+    -p "$postgres_port:5432" \
+    "postgres:$container_version"
+  until sudo docker exec "$container_name" pg_isready -U "$postgres_user" -d "$postgres_name" > /dev/null 2>&1; do
+    echo "Waiting for Postgres to become healthy..."
+    sleep 1
+  done
+}

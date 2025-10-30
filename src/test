@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+source <(curl -fsS --location "https://raw.githubusercontent.com/coreyMerritt/bash-utils/refs/heads/main/src/main")
+getYamlVar "../../baseline-python/config/test/database.yml" "engine"
