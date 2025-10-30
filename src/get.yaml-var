@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if ! which yq;
+  curl -sL -o /usr/bin/yq https://github.com/mikefarah/yq/releases/download/v4.48.1/yq_linux_amd64
+  chmod +x /usr/bin/yq
+fi
+
+file_path="$1"
+var_name="$2"
+yq ".$var_name" "$file_path"
