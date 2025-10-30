@@ -8,5 +8,5 @@ function getYamlVar() {
 
   file_path="$1"
   var_name="$2"
-  yq ".$var_name" "$file_path"
+  echo $(yq ".$var_name" "$file_path")
 }
