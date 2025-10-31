@@ -1,5 +1,27 @@
 #!/usr/bin/env bash
 
 function success() {
-  echo -e "\n\t\033[38;2;0;255;0m✔\033[0m $msg\n"
+  str=$1
+  pre_formatting_done=0
+  pre_formatting=""
+  message=""
+  for (( i=0; i<${#str}-1; i+=2 )); do
+    first="${str:i:1}"
+    pair="${str:i:2}"
+    if [[ $pre_formatting_done -eq 1 ]]; then
+      message="${message}${pair}"
+    else
+      if [[ "$first" == "\\" ]]; then
+        pre_formatting="${pre_formatting}${pair}"
+      else
+        pre_formatting_done=1
+        message="${message}${pair}"
+      fi
+    fi
+  done
+  length_of_str=${#str}
+  if (( length_of_str % 2 == 1 )); then
+    message="${message}${str: -1}"
+  fi
+  echo -e "${pre_formatting}\033[38;2;0;255;0m✔\033[0m ${message}"
 }

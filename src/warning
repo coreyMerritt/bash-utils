@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function error() {
+function warning() {
   str=$1
   pre_formatting_done=0
   pre_formatting=""
@@ -24,6 +24,5 @@ function error() {
   if (( length_of_str % 2 == 1 )); then
     message="${message}${str: -1}"
   fi
-  echo -e "${pre_formatting}033[38;2;255;0;0m✘\033[0m ${message}"
-  exit 1
+  echo -e "${pre_formatting}\033[38;2;255;128;0m⚠\033[0m ${message}"
 }
